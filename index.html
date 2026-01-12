@@ -1,23 +1,376 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- Schema.org LocalBusiness 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "다이렉트 비갱신 암보험 비교 서비스",
+    "image": "https://도메인/logo-insurance.png",
+    "url": "https://도메인/direct-cancer-insurance",
+    "telephone": "1661-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "서울특별시 강남구 테헤란로 123",
+      "addressLocality": "강남구",
+      "addressRegion": "서울",
+      "postalCode": "06134",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "대한민국"
+    },
+    "priceRange": "₩₩₩",
+    "description": "다이렉트 비갱신 암보험 상품을 전문적으로 비교 분석하고 추천합니다. 갱신형과의 차이점, 보장 범위, 저렴한 가입 방법 등 상세 정보를 제공합니다."
+  }
+  </script>
+
+  <!-- Google Fonts for better readability -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset and Typography */
+    body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; line-height: 1.7; font-size: 16px; }
+    header, section, footer { max-width: 960px; margin: 20px auto; padding: 25px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+    h1, h2, h3 { color: #0b3d91; margin-bottom: 15px; font-weight: 700; }
+    h1 { font-size: 2.5rem; text-align: center; color: #0b3d91; margin-bottom: 10px; }
+    h2 { font-size: 2rem; border-bottom: 3px solid #e0eaff; padding-bottom: 10px; }
+    h3 { font-size: 1.5rem; color: #333; }
+    p, li { font-size: 1.05rem; line-height: 1.8; margin-bottom: 10px; }
+
+    /* Layout and Navigation */
+    nav { max-width: 960px; margin: 20px auto; background-color: #eef4ff; border-radius: 12px; padding: 15px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); }
+    nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: space-around; }
+    nav ul li { margin: 8px 10px; }
+    nav ul li a { display: block; padding: 10px 15px; color: #0b3d91; font-weight: 600; text-decoration: none; border-radius: 6px; transition: background-color 0.3s, color 0.3s; }
+    nav ul li a:hover { background-color: #a3c4ff; color: #ffffff; }
+
+    /* Call to Action Button */
+    .btn-cta { display: inline-block; padding: 16px 35px; background: #4285f4; color: #ffffff; font-weight: 700; border: none; border-radius: 30px; box-shadow: 0 6px 15px rgba(66, 133, 244, 0.4); transition: background-color 0.3s ease, transform 0.2s ease; cursor: pointer; text-decoration: none; text-align: center; margin-top: 20px; font-size: 1.1rem; }
+    .btn-cta:hover { background: #3367d6; transform: translateY(-2px); box-shadow: 0 8px 18px rgba(66, 133, 244, 0.5); }
+
+    /* Tables */
+    table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+    th, td { padding: 15px; text-align: center; border-bottom: 1px solid #f0f0f0; border-right: 1px solid #f0f0f0; }
+    th { background: #e0eaff; color: #0b3d91; font-weight: 700; border-right: none; }
+    td { background: #ffffff; }
+    tr:nth-child(even) td { background-color: #fcfcfc; }
+    table tr:last-child td { border-bottom: none; }
+    table th:first-child, table td:first-child { text-align: left; padding-left: 20px; }
+
+    /* Form Styles */
+    form { max-width: 700px; margin: auto; padding: 30px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #e0eaff; }
+    label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+    input[type="text"], input[type="tel"], input[type="email"], select, textarea {
+      width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: content-box; font-size: 1rem; color: #444; transition: border-color 0.3s ease; }
+    input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus, select:focus, textarea:focus { border-color: #4285f4; outline: none; box-shadow: 0 0 5px rgba(66, 133, 244, 0.2); }
+    input[type="radio"], input[type="checkbox"] { margin-right: 5px; }
+
+    /* Utility Classes */
+    .highlight { background-color: #e0eaff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; }
+    .note { font-size: 0.9rem; color: #888; margin-top: 10px; }
+    .anchor { display: block; position: relative; top: -100px; visibility: hidden; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      header, section, footer, nav { margin: 10px auto; padding: 15px; max-width: 100%; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.3rem; }
+      nav ul { flex-direction: column; }
+      nav ul li { margin: 5px 0; }
+      .btn-cta { width: 100%; padding: 15px 0; }
+      table, th, td { display: block; width: 100%; box-sizing: border-box; }
+      thead { display: none; }
+      tr { margin-bottom: 10px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd; display: block; }
+      td { border: none; border-bottom: 1px solid #f0f0f0; text-align: right; position: relative; padding-left: 50%; }
+      td:before { content: attr(data-label); position: absolute; left: 15px; font-weight: 600; color: #0b3d91; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>다이렉트 비갱신 암보험: 2026년 가입 순위 및 가격 비교 가이드</h1>
+    <p>경제적 부담 없는 확실한 선택, 비갱신 암보험을 저렴하게 가입하는 방법과 추천 상품을 안내합니다.</p>
+    <a class="btn-cta" href="#quote-form">실시간 보험료 계산 &amp; 맞춤 견적 받기</a>
+  </header>
+
+  <nav aria-label="페이지 내 이동">
+    <ul>
+      <li><a href="#intro">암보험 필수 가이드</a></li>
+      <li><a href="#renewal-vs-nonrenewal">비갱신형 vs 갱신형 비교</a></li>
+      <li><a href="#direct-vs-offline">다이렉트 vs 설계사 비교</a></li>
+      <li><a href="#coverage-guide">보장 항목 체크리스트</a></li>
+      <li><a href="#checklist">현명한 가입 요령</a></li>
+      <li><a href="#faq">자주 묻는 질문 (FAQ)</a></li>
+      <li><a href="#quote-form">무료 견적 상담</a></li>
+    </ul>
+  </nav>
+
+  <section id="intro">
+    <span id="intro-anchor" class="anchor"></span>
+    <h2>암보험, 이제 선택이 아닌 필수! 왜 다이렉트 비갱신 암보험인가?</h2>
+    <p>2026년 현재, 대한민국 국민이 기대 수명까지 생존할 경우 3명 중 1명은 암에 걸린다는 통계가 있습니다. 암은 더 이상 불치병이 아닌 만성 질환으로 인식되고 있지만, 진단과 치료에 들어가는 비용은 여전히 가정 경제에 큰 타격을 줄 수 있습니다. 특히 비급여 항목의 항암 치료비용은 수천만원에 달하기도 합니다. 이러한 경제적 위험에 대비하기 위해 암보험은 현대인의 필수품이 되었습니다.</p>
+    <p>그렇다면 수많은 암보험 상품 중에서 왜 <strong>'다이렉트 비갱신 암보험'</strong>이 주목받고 있을까요? 이 키워드에는 두 가지 핵심적인 장점이 있습니다.</p>
+    <ul>
+      <li><strong>비갱신형 (非갱신型):</strong> 초기 보험료가 만기 시점까지 변동 없이 고정되어 장기적으로 총 납입 비용을 절감할 수 있습니다.</li>
+      <li><strong>다이렉트 (Direct):</strong> 설계사 없이 온라인으로 직접 가입하여 설계사 수수료가 제거되어 갱신형과 비교했을 때도 저렴한 가격으로 가입이 가능합니다.</li>
+    </ul>
+    <p>이 페이지에서는 다이렉트 비갱신 암보험의 장점과 단점, 현명한 가입 요령, 그리고 2026년 추천 상품 순위까지 모든 정보를 상세히 분석해 드립니다. 특히 40대, 50대 이상 연령층에서 암 발병률이 급증하는 시기이므로, 젊은 나이에 비갱신형으로 미리 가입해두는 것이 유리합니다.</p>
+  </section>
+
+  <section id="renewal-vs-nonrenewal">
+    <span id="renewal-vs-nonrenewal-anchor" class="anchor"></span>
+    <h2>비갱신형 vs 갱신형: 암보험 가입 시 가장 중요한 선택</h2>
+    <p>암보험을 선택할 때 가장 먼저 결정해야 할 부분은 갱신형(갱신형 암보험)과 비갱신형(비갱신 암보험) 중 어떤 유형을 선택할 것인가입니다. 이 선택은 장기적인 재정 계획에 막대한 영향을 미칩니다. 갱신형은 초기 보험료가 저렴한 장점이 있지만, 갱신 시점(보통 10년, 20년)마다 나이 증가와 손해율 반영으로 인해 보험료가 인상됩니다. 반면 비갱신형은 가입 시점의 보험료가 만기(예: 100세)까지 고정되는 것이 특징입니다.</p>
+
+    <div class="highlight">
+      <h3>비갱신형 암보험의 장점</h3>
+      <p>가장 큰 장점은 보험료 변동성이 없다는 것입니다. 특히 100세 만기 보장을 원할 경우, 갱신형은 나이가 들수록 보험료 폭탄을 맞을 위험이 높지만 비갱신형은 안정적으로 보장을 유지할 수 있습니다. 30대, 40대에 가입하여 90세, 100세까지 보장을 받으려는 경우 비갱신형의 총 납입 보험료가 장기적으로는 훨씬 저렴해질 수 있습니다.</p>
+    </div>
+
+    <h3>비갱신형과 갱신형 암보험 비교표</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>비갱신형 암보험</th>
+          <th>갱신형 암보험</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="보험료 변동">보험료 변동</td>
+          <td data-label="비갱신형 암보험">가입 시점의 보험료가 만기까지 고정</td>
+          <td data-label="갱신형 암보험">갱신 주기(5년/10년/20년)마다 보험료 인상</td>
+        </tr>
+        <tr>
+          <td data-label="초기 보험료">초기 보험료</td>
+          <td data-label="비갱신형 암보험">갱신형 대비 상대적으로 높음</td>
+          <td data-label="갱신형 암보험">비갱신형 대비 상대적으로 저렴함</td>
+        </tr>
+        <tr>
+          <td data-label="장기적 총액">장기적 총액 (100세 보장 기준)</td>
+          <td data-label="비갱신형 암보험">총 납입 보험료가 저렴해질 가능성이 높음</td>
+          <td data-label="갱신형 암보험">총 납입 보험료가 비싸질 가능성이 높음 (갱신 시 인상 폭 예측 불가)</td>
+        </tr>
+        <tr>
+          <td data-label="가입 추천 대상">가입 추천 대상</td>
+          <td data-label="비갱신형 암보험">장기적인 보장을 원하는 20~50대, 가족력이 있는 분</td>
+          <td data-label="갱신형 암보험">단기간 보장을 원하는 분, 고령층(60대 이상)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">비갱신형 암보험의 경우 가입 초기에는 갱신형보다 보험료가 높지만, 장기적으로는 총 납입 비용이 갱신형보다 저렴해지는 시점이 오게 됩니다. 이른 나이에 가입할수록 비갱신형의 장점이 극대화됩니다.</p>
+  </section>
+
+  <section id="direct-vs-offline">
+    <span id="direct-vs-offline-anchor" class="anchor"></span>
+    <h2>다이렉트(Direct) vs 설계사: 보험료 차이점 분석</h2>
+    <p>다이렉트 암보험은 설계사나 대리점 없이 소비자가 직접 온라인으로 가입하는 방식을 말합니다. 이 방식은 중간 수수료가 없어 일반 오프라인 상품보다 <strong>평균 10~30% 저렴한 가격</strong>으로 동일한 보장 내용을 구성할 수 있다는 장점이 있습니다.</p>
+    <p>과거에는 설계사의 전문적인 상담이 필수적이었지만, 최근에는 보험 상품 정보가 투명하게 공개되고 다이렉트 보험 비교 사이트들이 잘 갖춰져 있어 비전문가도 충분히 상품을 비교하고 가입할 수 있습니다. 특히 <strong>다이렉트 비갱신 암보험</strong>은 고정된 보험료로 장기간 납입해야 하므로, 초기 보험료를 낮추는 것이 가장 중요합니다.</p>
+
+    <h3>다이렉트 가입의 장점 (저렴한곳 찾는 노하우)</h3>
+    <ul>
+      <li><strong>보험료 절감:</strong> 설계사 수수료와 지점 운영비가 제외되어 보험료가 저렴합니다.</li>
+      <li><strong>시간 절약:</strong> 시간과 장소에 구애받지 않고 24시간 언제든 모바일이나 웹사이트를 통해 견적 비교 및 가입이 가능합니다.</li>
+      <li><strong>투명성:</strong> 여러 보험사의 상품을 한눈에 비교할 수 있어 합리적인 선택이 가능합니다.</li>
+      <li><strong>내돈내산 후기:</strong> 다이렉트 가입자는 상품 비교 과정에서 스스로 정보를 습득하므로, 가입 후 만족도가 높고 불필요한 특약 가입을 줄일 수 있습니다.</li>
+    </ul>
+
+    <h3>다이렉트 암보험과 오프라인 암보험 비교표</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>다이렉트 암보험 (온라인)</th>
+          <th>설계사 암보험 (오프라인)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="보험료">보험료</td>
+          <td data-label="다이렉트 암보험">저렴함 (수수료 절감)</td>
+          <td data-label="설계사 암보험">상대적으로 높음 (설계사 수당 포함)</td>
+        </tr>
+        <tr>
+          <td data-label="가입 편의성">가입 편의성</td>
+          <td data-label="다이렉트 암보험">24시간 온라인으로 간편 가입, 비교 편리</td>
+          <td data-label="설계사 암보험">설계사 상담 일정 조율 필요</td>
+        </tr>
+        <tr>
+          <td data-label="맞춤 설계">맞춤 설계</td>
+          <td data-label="다이렉트 암보험">스스로 상품 비교 후 원하는 특약 조합</td>
+          <td data-label="설계사 암보험">전문가 상담을 통한 맞춤 설계 (권유에 취약할 수 있음)</td>
+        </tr>
+        <tr>
+          <td data-label="상품 정보">상품 정보</td>
+          <td data-label="다이렉트 암보험">비교 사이트에서 다양한 상품의 보장 내용 비교</td>
+          <td data-label="설계사 암보험">설계사가 추천하는 특정 상품 위주로 정보 제공</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="coverage-guide">
+    <span id="coverage-guide-anchor" class="anchor"></span>
+    <h2>암보험, 핵심 보장 항목 체크리스트: 진단비와 특약을 중심으로</h2>
+    <p>암보험을 현명하게 가입하려면 단순히 저렴한 가격(싼곳)만을 찾기보다는 보장의 범위를 꼼꼼히 확인해야 합니다. 특히 <strong>암 진단비</strong>는 암 치료 과정 중 발생할 수 있는 소득 상실과 생활비까지 대비할 수 있는 가장 중요한 보장 항목입니다.</p>
+
+    <h3>1. 암 진단비 (일반암, 고액암, 유사암, 소액암)</h3>
+    <p>암보험은 암 종류에 따라 진단비를 다르게 지급합니다. 보장 범위가 넓은 상품일수록 유사암과 소액암에 대한 보장 금액이 일반암과 동일하거나 높습니다.</p>
+    <ul>
+      <li><strong>일반암:</strong> 위암, 간암, 폐암, 대장암 등 대부분의 암. 진단비의 기준이 됩니다.</li>
+      <li><strong>고액암:</strong> 췌장암, 뇌암, 혈액암 등 치료 비용이 높고 발병률이 상대적으로 낮은 특정 암. 일반암보다 더 많은 진단비를 지급합니다.</li>
+      <li><strong>유사암 (소액암):</strong> 갑상선암, 기타피부암, 경계성 종양, 제자리암 등. 과거에는 일반암으로 분류되었으나 최근에는 발병률이 높아지면서 보장 금액이 일반암 진단비의 10~20% 수준으로 축소되는 추세입니다.</li>
+    </ul>
+    <p class="highlight"><strong>가입 팁:</strong> 유사암 진단비 보장 금액이 일반암 진단비와 동일하거나 높게 설계된 상품을 선택하는 것이 유리합니다. 특히 유사암 중 발병률이 높은 갑상선암은 여성들에게 중요합니다.</p>
+
+    <h3>2. 특약으로 강화하는 보장 (치료비용, 수술비, 생활비)</h3>
+    <p>진단비 외에도 최근 암 치료 트렌드를 반영한 특약들이 중요합니다.</p>
+    <ul>
+      <li><strong>표적항암약물치료비:</strong> 기존 항암 치료보다 부작용이 적지만, 고액의 비용이 발생하는 표적항암치료에 대한 보장입니다.</li>
+      <li><strong>항암방사선치료비:</strong> 암세포에 방사선을 쪼여 치료하는 비용을 보장합니다.</li>
+      <li><strong>재진단암 진단비:</strong> 암 완치 후 재발하거나 전이되었을 때 추가로 진단비를 지급하는 특약입니다. 암은 재발 가능성이 높으므로 장기적인 관점에서 중요합니다.</li>
+      <li><strong>암 수술비/입원일당:</strong> 암으로 인한 입원 및 수술 시 일당을 보장합니다.</li>
+    </ul>
+  </section>
+
+  <section id="checklist">
+    <span id="checklist-anchor" class="anchor"></span>
+    <h2>2026년 현명한 암보험 가입 요령 (필수 체크리스트)</h2>
+    <p>암보험을 내돈내산 가입할 때 반드시 확인해야 할 5가지 핵심 사항입니다. 이 체크리스트를 통해 불필요한 비용을 줄이고 필요한 보장만 챙겨서 가입하세요.</p>
+
+    <div class="highlight">
+      <h3>1. 가입 시기는 빠를수록 좋다 (면책 기간, 감액 기간, 보험료)</h3>
+      <p>암보험은 가입 즉시 보장이 시작되지 않습니다. 대부분의 상품에는 <strong>면책 기간(90일)</strong>이 있으며, 이 기간 동안 암이 발병하면 보험금을 받을 수 없습니다. 또한 <strong>감액 기간(1~2년)</strong>이 있어 가입 후 일정 기간 내에 암이 발병하면 약관에 따라 보험금의 50%만 지급합니다. 따라서 하루라도 빨리 가입하는 것이 유리합니다.</p>
+      <p><strong>2026년 정보:</strong> 보험료는 가입 연령이 높을수록 비싸집니다. 30대 평균 보험료와 50대 평균 보험료는 차이가 큽니다. 비갱신형은 가입 시점의 보험료가 평생 고정되므로 젊을 때 가입할수록 장기적인 이득이 큽니다.</p>
+
+      <h3>2. 보장 만기는 100세 이상으로 길게 설정</h3>
+      <p>암 발병률은 40대 이후 급증하여 60~70대에 정점을 찍습니다. 보장 기간이 80세 만기인 경우 암 발병률이 높은 80세 이후의 노년기를 보장받지 못할 수 있습니다. 비갱신형의 장점을 극대화하기 위해 100세 만기를 추천합니다.</p>
+
+      <h3>3. 진단비 위주 설계 및 불필요한 특약 제거</h3>
+      <p>암보험의 핵심은 진단비입니다. 진단비는 치료비뿐만 아니라 생활비까지 자유롭게 활용할 수 있습니다. 입원일당, 수술비 등은 실손보험이나 다른 보험으로 대체 가능하므로, 암보험에서는 진단비 위주로 보장을 튼튼하게 설계하고 불필요한 특약을 제거하여 보험료(예상 금액)를 낮추는 것이 현명합니다.</p>
+
+      <h3>4. 유병력자의 경우 간편심사 보험도 고려</h3>
+      <p>이미 병력이 있거나 만성 질환을 앓고 있는 유병력자도 암보험 가입이 가능합니다. 일반 심사형보다 보험료는 높지만, 325(3개월 이내 입원·수술·추가 검사 여부, 2년 이내 입원·수술 여부, 5년 이내 암 진단 여부) 등 간편한 고지 의무(계약 전 알릴 의무)를 통과하면 가입할 수 있습니다.</p>
+
+      <h3>5. 무해지환급형 상품으로 추가 보험료 절감</h3>
+      <p>무해지환급형(해약환급금 미지급형) 상품은 납입 기간 중에 해약하면 환급금이 없거나 적지만, 일반형 대비 보험료가 저렴합니다. 100세 만기 비갱신형으로 가입할 경우 중도 해지할 가능성이 낮으므로, 무해지환급형을 선택하여 추가적인 보험료 할인을 받는 것이 유리합니다.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <span id="faq-anchor" class="anchor"></span>
+    <h2>자주 묻는 질문 (FAQ)</h2>
+    <dl>
+      <dt>Q1: 다이렉트 비갱신 암보험의 평균 금액은 얼마인가요?</dt>
+      <dd>A: 개인의 나이, 성별, 가입 금액(진단비 규모), 특약 구성에 따라 크게 달라집니다. 30대 남성 기준 2~3만원대, 40대 여성 기준 3~4만원대부터 시작하며, 50대 이상은 5만원 이상으로 예상됩니다. 정확한 금액은 견적을 받아봐야 합니다.</dd>
+
+      <dt>Q2: 갱신형 암보험에 이미 가입했는데, 비갱신형으로 갈아타는 것이 좋을까요?</dt>
+      <dd>A: 가입한 지 얼마 안 되었거나 보장 금액이 부족하다면 갈아타는 것을 추천합니다. 갱신형은 시간이 지날수록 보험료 인상 폭이 커져 장기적으로는 비갱신형보다 총 납입액이 높을 수 있습니다. 다만, 고령이거나 건강이 좋지 않은 경우 재가입이 어려울 수 있으므로 전문가와 상담 후 결정해야 합니다.</dd>
+
+      <dt>Q3: 유사암/소액암 보장은 왜 일반암보다 적게 주나요?</dt>
+      <dd>A: 갑상선암, 기타피부암 등 유사암은 일반암에 비해 치료가 비교적 쉽고 생존율이 높습니다. 과거에는 일반암으로 분류되었지만, 높은 발병률로 인해 보험사의 손해율이 증가하여 보장 금액을 축소하는 것이 최근 트렌드입니다.</dd>
+
+      <dt>Q4: 비갱신 암보험 가입 시 고지 의무는 무엇인가요?</dt>
+      <dd>A: 보험 가입 전 보험사에 자신의 건강 상태(병력, 치료 이력, 약 복용 등)를 알려야 하는 의무입니다. 이를 위반하면 추후 보험금 지급이 거절될 수 있습니다. 특히 5년 이내 암 진단 이력이 있는 경우 가입이 어렵거나 제한될 수 있습니다.</dd>
+
+      <dt>Q5: 다이렉트 암보험은 가입 후 관리가 어려운가요?</dt>
+      <dd>A: 다이렉트 보험이라도 가입 후 관리(보험금 청구, 약관 변경 등)는 각 보험사 고객센터나 모바일 앱을 통해 편리하게 이용할 수 있습니다. 전문 설계사 관리가 필요하다면 설계사형 상품을 고려할 수 있지만, 다이렉트 상품도 충분히 자가 관리가 가능합니다.</dd>
+    </dl>
+  </section>
+
+  <section id="external-links">
+    <span id="external-links-anchor" class="anchor"></span>
+    <h2>신뢰할 수 있는 외부 정보 참고 자료</h2>
+    <p>암보험 가입 전, 객관적인 정보를 바탕으로 신중하게 결정하는 것이 중요합니다. 아래는 보험 및 금융 정보를 제공하는 신뢰할 수 있는 외부 사이트입니다.</p>
+    <ul>
+      <li><a href="https://www.fss.or.kr/" target="_blank">금융감독원 (FSS)</a>: 보험 약관 및 소비자 보호 관련 가이드라인, 분쟁 조정 사례 등 확인 가능.</li>
+      <li><a href="https://www.hira.or.kr/" target="_blank">건강보험심사평가원 (HIRA)</a>: 비급여 진료비 정보 확인 가능.</li>
+      <li><a href="https://www.nhis.or.kr/" target="_blank">국민건강보험공단 (NHIS)</a>: 암 예방 및 건강보험 보장성 강화 정책 관련 정보 확인 가능.</li>
+      <li><a href="https://namu.wiki/w/%EC%95%94%EB%B3%B4%ED%97%98" target="_blank">나무위키 암보험 문서</a>: 암보험 관련 일반적인 정보 및 역사, 트렌드 참고.</li>
+      <li><a href="https://www.kdi.re.kr/" target="_blank">한국개발연구원 (KDI)</a>: 경제 정책 및 연구 자료 확인 가능.</li>
+    </ul>
+  </section>
+
+  <section id="quote-form">
+    <span id="quote-form-anchor" class="anchor"></span>
+    <h2>나에게 딱 맞는 다이렉트 비갱신 암보험 견적 상담 신청</h2>
+    <p>2026년 최신 상품 기준으로, 나이와 건강 상태에 따라 최적의 상품이 다릅니다. 복잡한 상품 비교를 전문가의 도움을 받아 간편하게 해결하세요. 아래 양식을 작성해 주시면 다이렉트 상품 비교 전문가가 연락드려 맞춤 설계를 도와드립니다. <span style="font-weight:700;">(상담은 무료이며, 가입 강요는 없습니다.)</span></p>
+
+    <form action="/submit_quote" method="POST">
+      <h3>1. 기본 정보 입력</h3>
+      <label for="name">이름<span style="color:red;">*</span></label>
+      <input type="text" id="name" name="name" required placeholder="본명 입력" />
+
+      <label for="birthdate">생년월일<span style="color:red;">*</span></label>
+      <input type="text" id="birthdate" name="birthdate" required placeholder="예: 19800101" />
+
+      <label for="phone">연락처<span style="color:red;">*</span></label>
+      <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+" />
+
+      <label for="gender">성별<span style="color:red;">*</span></label>
+      <select id="gender" name="gender" required>
+        <option value="">선택</option>
+        <option value="male">남성</option>
+        <option value="female">여성</option>
+      </select>
+
+      <h3>2. 희망 보장 설계 (자세히 입력 시 정확한 견적 제공)</h3>
+      <label for="coverage-amount">희망 암 진단비 금액<span style="color:red;">*</span></label>
+      <select id="coverage-amount" name="coverage_amount" required>
+        <option value="">선택하세요</option>
+        <option value="3000만원">3천만원</option>
+        <option value="5000만원">5천만원</option>
+        <option value="1억원">1억원 이상</option>
+        <option value="consultation">상담 후 결정</option>
+      </select>
+
+      <label for="coverage-type">희망 보장 유형<span style="color:red;">*</span></label>
+      <div style="margin-bottom: 15px;">
+        <input type="radio" id="type-nonrenewal" name="coverage_type" value="비갱신형" required />
+        <label for="type-nonrenewal">비갱신형 (추천)</label>
+        <input type="radio" id="type-renewal" name="coverage_type" value="갱신형" />
+        <label for="type-renewal">갱신형 (저렴한 초기 비용)</label>
+      </div>
+
+      <label for="specific-needs">필요한 특약 선택 (중복 선택 가능)</label>
+      <div style="margin-bottom: 15px;">
+        <input type="checkbox" id="특약1" name="specific_needs" value="표적항암약물치료비" />
+        <label for="특약1">표적항암치료비</label><br>
+        <input type="checkbox" id="특약2" name="specific_needs" value="재진단암 진단비" />
+        <label for="특약2">재진단암 진단비</label><br>
+        <input type="checkbox" id="특약3" name="specific_needs" value="입원일당/수술비" />
+        <label for="특약3">암 입원/수술비</label><br>
+        <input type="checkbox" id="특약4" name="specific_needs" value="유사암 보장 강화" />
+        <label for="특약4">유사암 보장 강화</label>
+      </div>
+
+      <h3>3. 건강 관련 고지 의무 (정확한 심사를 위해 필수)</h3>
+      <label for="health-history">최근 5년 이내 암 진단, 치료, 수술 이력이 있습니까?<span style="color:red;">*</span></label>
+      <div style="margin-bottom: 15px;">
+        <input type="radio" id="history-no" name="health_history" value="없음" required />
+        <label for="history-no">없음</label>
+        <input type="radio" id="history-yes" name="health_history" value="있음" />
+        <label for="history-yes">있음</label>
+      </div>
+
+      <label for="medical-notes">기타 병력 또는 복용 중인 약물<span style="color:red;">*</span></label>
+      <textarea id="medical-notes" name="medical_notes" rows="3" placeholder="예: 고혈압약 복용 중, 2년 전 위내시경 용종 제거 등"></textarea>
+
+      <label for="memo">추가 문의 사항</label>
+      <textarea id="memo" name="memo" rows="4" placeholder="예: 2026년 가성비 좋은 상품 추천 부탁드립니다."></textarea>
+
+      <button type="submit" class="btn-cta">무료 견적 요청</button>
+      <p class="note" style="text-align: center;">개인정보는 상담 용도로만 사용됩니다. 자세한 내용은 개인정보처리방침을 확인해 주십시오.</p>
+    </form>
+  </section>
+
+ 
+
+  
